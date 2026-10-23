@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Weather Forecast App - current weather and 5-day forecast for any city.">
+  <title>Weather Forecast App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Weather Forecast</h1>
+      <p class="subtitle">Search a city to see current conditions and the next five days.</p>
+    </header>
+
+    <form id="search-form" class="search-form" novalidate>
+      <label for="city-input" class="visually-hidden">City name</label>
+      <input
+        type="text"
+        id="city-input"
+        name="city"
+        placeholder="Enter city name (e.g. Delhi)"
+        autocomplete="off"
+        required
+      >
+      <button type="submit" id="search-btn">Search</button>
+    </form>
+
+    <!-- Loading and error messages are announced to screen readers -->
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <section id="current-weather" class="current hidden" aria-labelledby="current-heading">
+      <h2 id="current-heading" class="visually-hidden">Current weather</h2>
+      <div class="current-main">
+        <div>
+          <p id="location" class="location"></p>
+          <p id="date-time" class="date-time"></p>
+          <p id="temperature" class="temperature"></p>
+          <p id="description" class="description"></p>
+        </div>
+        <img id="weather-icon" class="weather-icon" src="" alt="">
+      </div>
+      <div class="details">
+        <div class="detail">
+          <span class="detail-label">Feels like</span>
+          <span id="feels-like" class="detail-value"></span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">Humidity</span>
+          <span id="humidity" class="detail-value"></span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">Wind speed</span>
+          <span id="wind" class="detail-value"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="forecast-section" class="forecast hidden" aria-labelledby="forecast-heading">
+      <h2 id="forecast-heading">5-Day Forecast</h2>
+      <div id="forecast-container" class="forecast-grid"></div>
+      <p class="note">Each card shows an indicative forecast entry (around midday) for that date.</p>
+    </section>
+
+    <!-- Carousel: one state at a time, sliding sideways -->
+    <section class="carousel-section" aria-labelledby="carousel-heading">
+      <h2 id="carousel-heading">Climate Across States</h2>
+      <div class="carousel" id="carousel">
+        <div class="track" id="track"></div>
+        <button type="button" id="prev-btn" class="car-btn prev" aria-label="Previous state">&#8249;</button>
+        <button type="button" id="next-btn" class="car-btn next" aria-label="Next state">&#8250;</button>
+        <div class="dots" id="dots"></div>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <p>Weather data provided by <a href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer">OpenWeather</a></p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
